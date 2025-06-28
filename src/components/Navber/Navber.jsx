@@ -1,7 +1,26 @@
-import React from "react";
-import { NavLink } from "react-router";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { NavLink, useNavigate } from "react-router";
 import "../Navber/navStyle.css";
+import { AuthContext } from "../../context/AuthProvider";
+import { toast } from "react-toastify";
 const Navber = () => {
+  const notify = () => toast("✅ Login Successfully");
+  const { user, logOut } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef();
+  const navigate = useNavigate();
+
+  const toggleDropdown = () => setOpen(!open);
+  useEffect(() => {
+    const handleShowUser = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleShowUser);
+    return () => document.removeEventListener("mousedown", handleShowUser);
+  }, []);
+  console.log(user);
   const links = (
     <>
       <li>
@@ -23,6 +42,16 @@ const Navber = () => {
       </li>
     </>
   );
+
+  const handleLogout = () => {
+    logOut()
+      .then((res) => {
+        notify();
+      })
+      .catch((err) => {
+        toast.error("❌ Login failed. Please try again.");
+      });
+  };
 
   return (
     <div className="navbar  sticky top-0 bg-[#1974cf] z-30 ">
@@ -57,10 +86,63 @@ const Navber = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <NavLink className="btn" to="/login">
-          Login
-        </NavLink>
+      <div className="navbar-end space-x-3">
+        {user ? (
+          ""
+        ) : (
+          <NavLink className="btn" to="/login">
+            Login
+          </NavLink>
+        )}
+
+        <div className=" relative inline-block text-left" ref={dropdownRef}>
+          {user?.photoURL && (
+            <div className="relative w-[40px] h-[40px] group  sm:block">
+              <img
+                onClick={toggleDropdown}
+                className="w-full h-full rounded-full object-cover"
+                src={user.photoURL}
+                alt="User"
+              />
+
+              {open && (
+                <div className="absolute right-0 mt-2 w-52 bg-white border rounded-md shadow-lg z-50">
+                  <div className="px-4 py-2 border-b font-semibold text-gray-700">
+                    {user?.displayName || "Anonymous User"}
+                  </div>
+                  <ul className="text-sm text-gray-700">
+                    <li
+                      onClick={() => {
+                        navigate("/my-artifacts");
+                        setOpen(false);
+                      }}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      My Artifacts
+                    </li>
+                    <li
+                      onClick={() => {
+                        navigate("/liked-artifacts");
+                        setOpen(false);
+                      }}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      Liked Artifacts
+                    </li>
+                  </ul>
+                  <div className="border-t">
+                    <button
+                      onClick={handleLogout}
+                      className="w-full px-4 py-2 text-left cursor-pointer text-red-600 hover:bg-red-50"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
