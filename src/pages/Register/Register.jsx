@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Register = () => {
-  const handleFormSubmit = () => {
-    console.log("hi");
+  const { signUp } = useContext(AuthContext);
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const userData = Object.fromEntries(formData.entries());
+    console.log(userData.email);
+
+    signUp(userData.email, userData.password)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   return (
     <div className="back">

@@ -18,8 +18,19 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const signUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const provider = new GoogleAuthProvider();
+  const googleLogin = () => {
+    return signInWithPopup(auth, provider);
+  };
+
   const userInfo = {
     signIn,
+    signUp,
+    googleLogin,
   };
 
   return <AuthContext value={userInfo}>{children}</AuthContext>;
