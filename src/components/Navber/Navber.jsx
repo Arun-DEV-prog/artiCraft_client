@@ -25,7 +25,7 @@ const Navber = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar  sticky top-0 bg-[#1974cf] z-30 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn  lg:hidden">
@@ -52,13 +52,15 @@ const Navber = () => {
           </ul>
         </div>
 
-        <a className="text-xl  text-black font-[--font-playwrite]">Artifacts</a>
+        <a className="text-xl  text-white font-[--font-playwrite]">Artifacts</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <NavLink className="btn" to="/login">
+          Login
+        </NavLink>
       </div>
     </div>
   );

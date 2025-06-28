@@ -1,5 +1,5 @@
-a.active {
-  color: blue;
+a.active :hover {
+   
   border-bottom: red;
  
 }
