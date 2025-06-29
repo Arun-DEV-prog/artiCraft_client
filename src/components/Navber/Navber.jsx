@@ -31,7 +31,7 @@ const Navber = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink>
+        <NavLink to="/allartifacts">
           {({ isActive }) => (
             <span className={isActive ? "active" : " "}> All Artifacts</span>
           )}

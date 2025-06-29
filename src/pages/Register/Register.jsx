@@ -56,7 +56,7 @@ const Register = () => {
                 />
 
                 <button type="submit" className="btn btn-neutral mt-4">
-                  Login
+                  Register
                 </button>
 
                 <p className=" text-[16px] text-center">

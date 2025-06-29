@@ -6,6 +6,7 @@ import Rootlayout from "../layouts/Rootlayout";
 import Home from "../components/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Allartifact from "../pages/Allartifacts/Allartifact";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/allartifacts",
+        Component: Allartifact,
       },
     ],
   },
