@@ -9,6 +9,7 @@ import Register from "../pages/Register/Register";
 import Allartifact from "../pages/Allartifacts/Allartifact";
 import Loading from "../components/Loading";
 import Artifactdetails from "../pages/Artifactsdetails/Artifactdetails";
+import AddArtifact from "../pages/AddArtifact/AddArtifact";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
           fetch(`http://localhost:3000/allartifacts/${params.id}`),
         hydrateFallbackElement: Loading,
         Component: Artifactdetails,
+      },
+      {
+        path: "/addartifact",
+        Component: AddArtifact,
       },
     ],
   },

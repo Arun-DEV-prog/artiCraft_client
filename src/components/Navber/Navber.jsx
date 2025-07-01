@@ -38,7 +38,7 @@ const Navber = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink>Add Artifacts</NavLink>
+        <NavLink to="/addartifact">Add Artifacts</NavLink>
       </li>
     </>
   );
