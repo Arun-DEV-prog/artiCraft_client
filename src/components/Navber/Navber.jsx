@@ -4,7 +4,7 @@ import "../Navber/navStyle.css";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
 const Navber = () => {
-  const notify = () => toast("✅ Login Successfully");
+  const notify1 = () => toast("✅ LogOut Successfully");
   const { user, logOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef();
@@ -46,7 +46,7 @@ const Navber = () => {
   const handleLogout = () => {
     logOut()
       .then((res) => {
-        notify();
+        notify1();
       })
       .catch((err) => {
         toast.error("❌ Login failed. Please try again.");

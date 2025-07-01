@@ -10,6 +10,8 @@ import Allartifact from "../pages/Allartifacts/Allartifact";
 import Loading from "../components/Loading";
 import Artifactdetails from "../pages/Artifactsdetails/Artifactdetails";
 import AddArtifact from "../pages/AddArtifact/AddArtifact";
+import PrivateRoute from "../context/PrivateRoute";
+import MyArtifact from "../pages/MyArtifact/MyArtifact";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +43,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/addartifact",
-        Component: AddArtifact,
+        element: (
+          <PrivateRoute>
+            <AddArtifact></AddArtifact>
+          </PrivateRoute>
+        ),
+      },
+
+      //  my artifact
+      {
+        path: "/my-artifacts",
+        element: (
+          <PrivateRoute>
+            <MyArtifact></MyArtifact>
+          </PrivateRoute>
+        ),
       },
     ],
   },

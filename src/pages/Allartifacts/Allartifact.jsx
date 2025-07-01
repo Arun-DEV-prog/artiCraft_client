@@ -47,7 +47,7 @@ const Allartifact = () => {
               <div className=" flex justify-between">
                 <div>
                   <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
-                    <BiLike size={20} /> Likes: {artifact.likeCount}
+                    <BiLike size={20} /> Likes : {artifact.likeCount}
                   </p>
                 </div>
 
