@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { BiLike } from "react-icons/bi";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import Loading from "../Loading";
 
 const FeaturedSection = () => {
@@ -54,10 +54,13 @@ const FeaturedSection = () => {
                 </div>
 
                 <div>
-                  <button className="btn bg-blue-500">
+                  <Link
+                    to={`/allartifacts/${artifact._id}`}
+                    className="btn bg-blue-500"
+                  >
                     View Details{" "}
                     <FaArrowRight className="text-white" size={20} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

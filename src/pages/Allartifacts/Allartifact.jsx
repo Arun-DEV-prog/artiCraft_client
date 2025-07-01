@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import axios from "axios";
-import { NavLink } from "react-router";
+import { NavLink, useParams } from "react-router";
 import { BiLike } from "react-icons/bi";
 import { FaArrowRight } from "react-icons/fa6";
 import Loading from "../../components/Loading";
@@ -52,10 +52,13 @@ const Allartifact = () => {
                 </div>
 
                 <div>
-                  <button className="btn bg-blue-500">
-                    View Details{" "}
+                  <NavLink
+                    to={`/allartifacts/${artifact._id}`}
+                    className="btn bg-blue-500"
+                  >
+                    View Details
                     <FaArrowRight className="text-white" size={20} />
-                  </button>
+                  </NavLink>
                 </div>
               </div>
             </div>
