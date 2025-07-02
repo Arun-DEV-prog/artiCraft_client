@@ -2,6 +2,7 @@ import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GoArrowUp } from "react-icons/go";
 import Swal from "sweetalert2";
+import { Link } from "react-router";
 
 const MyArtifactCard = ({ data, onDelete }) => {
   const { _id, artifactName, image, description, likeCount } = data;
@@ -64,9 +65,12 @@ const MyArtifactCard = ({ data, onDelete }) => {
             Delete <RiDeleteBin6Line />
           </button>
 
-          <button className="flex items-center gap-1 bg-green-100 text-green-800 px-3 py-1 rounded hover:bg-green-200">
+          <Link
+            to={`/update/${_id}`}
+            className="flex items-center gap-1 bg-green-100 text-green-800 px-3 py-1 rounded hover:bg-green-200"
+          >
             Update <GoArrowUp />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
