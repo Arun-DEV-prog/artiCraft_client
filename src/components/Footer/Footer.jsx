@@ -5,16 +5,19 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-4 sm:grid-cols-2 gap-8">
+        {/* About Section */}
         <div>
-          <h1 className="text-2xl font-bold mb-4">MySite</h1>
+          <h1 className="text-2xl font-bold mb-4">ArtifactVault</h1>
           <p className="text-gray-400">
-            A modern web app built with React, Firebase, and TailwindCSS. Fast,
-            secure, and user-friendly.
+            Discover the hidden treasures of human history. Explore rare and
+            iconic artifacts from around the world, preserved and presented with
+            modern technology.
           </p>
         </div>
 
+        {/* Quick Links */}
         <div>
-          <h2 className="text-xl font-semibold mb-3">Quick Links</h2>
+          <h2 className="text-xl font-semibold mb-3">Explore</h2>
           <ul className="space-y-2 text-gray-300">
             <li>
               <a href="/" className="hover:text-white">
@@ -22,33 +25,35 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/dashboard" className="hover:text-white">
-                Dashboard
+              <a href="/artifacts" className="hover:text-white">
+                All Artifacts
               </a>
             </li>
             <li>
-              <a href="/login" className="hover:text-white">
-                Login
+              <a href="/myliked" className="hover:text-white">
+                My Liked
               </a>
             </li>
             <li>
-              <a href="/register" className="hover:text-white">
-                Register
+              <a href="/add-artifact" className="hover:text-white">
+                Add Artifact
               </a>
             </li>
           </ul>
         </div>
 
+        {/* Resources */}
         <div>
-          <h2 className="text-xl font-semibold mb-3">Resources</h2>
+          <h2 className="text-xl font-semibold mb-3">Technologies Used</h2>
           <ul className="space-y-2 text-gray-300">
             <li>
               <a
                 href="https://reactjs.org/"
                 target="_blank"
                 className="hover:text-white"
+                rel="noreferrer"
               >
-                React
+                React.js
               </a>
             </li>
             <li>
@@ -56,6 +61,7 @@ const Footer = () => {
                 href="https://tailwindcss.com/"
                 target="_blank"
                 className="hover:text-white"
+                rel="noreferrer"
               >
                 Tailwind CSS
               </a>
@@ -65,15 +71,27 @@ const Footer = () => {
                 href="https://firebase.google.com/"
                 target="_blank"
                 className="hover:text-white"
+                rel="noreferrer"
               >
-                Firebase
+                Firebase Auth
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.mongodb.com/"
+                target="_blank"
+                className="hover:text-white"
+                rel="noreferrer"
+              >
+                MongoDB
               </a>
             </li>
           </ul>
         </div>
 
+        {/* Social Links */}
         <div>
-          <h2 className="text-xl font-semibold mb-3">Follow Us</h2>
+          <h2 className="text-xl font-semibold mb-3">Connect With Us</h2>
           <div className="flex gap-4 mt-2">
             <a href="#" className="text-gray-300 hover:text-white">
               <FaFacebookF />
@@ -91,8 +109,9 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Bottom Footer */}
       <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-400">
-        © {new Date().getFullYear()} MySite. All rights reserved.
+        © {new Date().getFullYear()} ArtifactVault. All rights reserved.
       </div>
     </footer>
   );

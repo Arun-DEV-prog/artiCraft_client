@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Lottie from "lottie-react";
 import singin from "../../assets/Animation - 1750425542532 (1).json";
@@ -8,7 +8,10 @@ import singin from "../../assets/Animation - 1750425542532 (1).json";
 const Login = () => {
   const notify = () => toast("✅ Login Successfully");
   const { signIn, googleLogin } = useContext(AuthContext);
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/allartifacts";
+  console.log(from);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,13 +19,17 @@ const Login = () => {
     const password = form.password.value;
 
     signIn(email, password)
-      .then(() => notify())
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch(() => toast.error("❌ Login failed. Please try again."));
   };
 
   const handlGoogleLogin = () => {
     googleLogin()
-      .then(() => notify())
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch(() => toast.error("❌ Login failed. Please try again."));
   };
 

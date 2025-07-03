@@ -1,79 +1,94 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import axios from "axios";
-import { NavLink, useParams } from "react-router";
-import { BiLike } from "react-icons/bi";
+import { NavLink } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
 import Loading from "../../components/Loading";
 
 const Allartifact = () => {
   const { loading } = useContext(AuthContext);
   const [artifact, setArtifact] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearch = async () => {
+    try {
+      const res = await axios.post("http://localhost:3000/searchartifacts", {
+        searchText,
+      });
+      setArtifact(res.data);
+    } catch (error) {
+      console.error("Search error:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchArtifacts = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/allartifacts");
-        setArtifact(res.data);
-      } catch (err) {
-        console.error("Error fetching artifact :", err);
-      }
+    const fetchAll = async () => {
+      const res = await axios.get("http://localhost:3000/allartifacts");
+      setArtifact(res.data);
     };
-    fetchArtifacts();
+    fetchAll();
   }, []);
-  if (loading) return <Loading></Loading>;
+
+  if (loading) return <Loading />;
 
   return (
     <div className="back">
-      <h1 className="text-center text-3xl p-5 italic ">All Artifacts</h1>
+      <h1 className="text-center text-3xl p-5 italic">All Artifacts</h1>
+
+      {/* 🔍 Search Input and Button */}
+      <div className="max-w-md mx-auto mb-6 px-5 flex gap-2">
+        <input
+          type="text"
+          placeholder="Search by artifact name..."
+          className="w-full p-2 border border-gray-300 rounded"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <button
+          className="bg-blue-600 text-white px-4 rounded"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-5">
-        {artifact
-          .sort((a, b) => b.likeCount - a.likeCount) // Step 1: Sort by likeCount (highest first)
-          // Step 2: Take top 6
-          .map((artifact) => (
-            <div
-              key={artifact._id}
-              className="border rounded shadow p-4 bg-white hover:shadow-lg transition"
-            >
-              <img
-                src={artifact.image}
-                alt={artifact.artifactName}
-                className="w-full h-48 object-cover rounded"
-              />
-              <h2 className="text-xl font-bold mt-2">
-                {artifact.artifactName}
-              </h2>
-              <p className="text-gray-600">{artifact.shortDescription}</p>
-              <div className=" flex justify-between">
-                <div>
+        {artifact.length > 0 ? (
+          artifact
+            .sort((a, b) => b.likeCount - a.likeCount)
+            .map((artifact) => (
+              <div
+                key={artifact._id}
+                className="border rounded shadow p-4 bg-white hover:shadow-lg transition"
+              >
+                <img
+                  src={artifact.image}
+                  alt={artifact.artifactName}
+                  className="w-full h-48 object-cover rounded"
+                />
+                <h2 className="text-xl font-bold mt-2">
+                  {artifact.artifactName}
+                </h2>
+                <p className="text-gray-600">{artifact.shortDescription}</p>
+                <div className="flex justify-between">
                   <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
                     Likes : {artifact.likeCount}
                   </p>
-                </div>
-
-                <div>
                   <NavLink
                     to={`/allartifacts/${artifact._id}`}
-                    className="btn bg-blue-500"
+                    className="btn bg-blue-500 text-white px-3 py-1 rounded flex items-center gap-1"
                   >
-                    View Details
-                    <FaArrowRight className="text-white" size={20} />
+                    View Details <FaArrowRight />
                   </NavLink>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+        ) : (
+          <p className="text-center min-h-[900px] col-span-3 text-gray-500 text-lg">
+            No artifacts found.
+          </p>
+        )}
       </div>
-
-      {/* <div className=" text-center p-4 mt-6">
-        <NavLink
-          to="/allartifacts"
-          className="btn text-xl  bg-blue-600 px-5 py-1 text-black  "
-        >
-          See All
-          <FaArrowRight className="text-white" size={20} />{" "}
-        </NavLink>
-      </div> */}
     </div>
   );
 };
