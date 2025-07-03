@@ -37,9 +37,11 @@ const Navber = () => {
           )}
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/addartifact">Add Artifacts</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/addartifact">Add Artifacts</NavLink>
+        </li>
+      )}
     </>
   );
 

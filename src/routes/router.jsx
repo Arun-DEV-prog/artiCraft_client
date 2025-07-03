@@ -13,6 +13,7 @@ import AddArtifact from "../pages/AddArtifact/AddArtifact";
 import PrivateRoute from "../context/PrivateRoute";
 import MyArtifact from "../pages/MyArtifact/MyArtifact";
 import Update from "../pages/Update/Update";
+import MyLikedArtifacts from "../pages/MyLikedArtifacts/MyLikedArtifacts";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/allartifacts/${params.id}`),
         hydrateFallbackElement: Loading,
-        Component: Artifactdetails,
+        element: (
+          <PrivateRoute>
+            <Artifactdetails></Artifactdetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addartifact",
@@ -68,6 +73,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Update></Update>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/liked-artifacts",
+        element: (
+          <PrivateRoute>
+            <MyLikedArtifacts />
           </PrivateRoute>
         ),
       },

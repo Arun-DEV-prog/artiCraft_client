@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
-import { use } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
+import register from "../../assets/Animation - 1751533746511.json";
+import Lottie from "lottie-react";
 
 const Register = () => {
   const { signUp } = useContext(AuthContext);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+    const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData.email);
 
@@ -16,62 +17,84 @@ const Register = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+
   return (
-    <div className="back">
-      <div className="w-[500px] h-[600px] mx-auto">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="card w-full max-w-sm shrink-0 shadow-2xl">
-            <div className="card-body mt-5 border rounded-md shadow-lg">
-              <h1 className="text-3xl italic text-white mb-4 text-center font-bold">
-                Register Now !
-              </h1>
-              <form onSubmit={handleFormSubmit} className="fieldset">
-                <label className="label text-white">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  className="input text-black placeholder:text-gray-700"
-                />
-                <label className="label text-white">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="input text-black placeholder:text-gray-700"
-                />
-                <label className="label text-white">PhotoURl</label>
-                <input
-                  type="text"
-                  name="photourl"
-                  placeholder="Photourl"
-                  className="input text-black placeholder:text-gray-700"
-                />
-                <label className="label text-white">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="input text-black placeholder:text-gray-700"
-                />
+    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center back px-4 py-10 gap-10">
+      {/* Lottie animation */}
+      <div className="w-full max-w-md">
+        <Lottie animationData={register} loop={true} />
+      </div>
 
-                <button type="submit" className="btn btn-neutral mt-4">
-                  Register
-                </button>
-
-                <p className=" text-[16px] text-center">
-                  Already have an account ?
-                  <Link
-                    to="/login"
-                    className="text-blue-400 underline font-bold"
-                  >
-                    SignIn
-                  </Link>
-                </p>
-              </form>
-            </div>
+      {/* Register Form */}
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-lg p-6">
+        <h1 className="text-3xl lg:text-4xl text-center font-bold text-gray-800 mb-6">
+          Register Now!
+        </h1>
+        <form onSubmit={handleFormSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name"
+              className="w-full px-4 py-2 border rounded-md mt-1 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
           </div>
-        </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Your email"
+              className="w-full px-4 py-2 border rounded-md mt-1 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Photo URL
+            </label>
+            <input
+              type="text"
+              name="photourl"
+              placeholder="Photo URL"
+              className="w-full px-4 py-2 border rounded-md mt-1 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="w-full px-4 py-2 border rounded-md mt-1 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition"
+          >
+            Register
+          </button>
+
+          <p className="text-sm text-black text-center mt-4">
+            Already have an account?
+            <Link
+              to="/login"
+              className="text-blue-500 font-semibold ml-1 underline"
+            >
+              Sign In
+            </Link>
+          </p>
+        </form>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import { motion } from "framer-motion"; // Framer Motion
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -16,34 +17,45 @@ import arti4 from "../../assets/arti4.jpg";
 const slides = [
   {
     img: arti1,
-    title: "Modern UI Experience",
-    desc: "Explore stunning visual designs powered by React and Swiper.",
+    title: "Timeless Human Ingenuity",
+    desc: "Artifacts reveal the brilliance of ancient civilizations — from tools to technology, crafted long before modern advancements.",
   },
   {
     img: arti2,
-    title: "Performance & Speed",
-    desc: "Built for speed using TailwindCSS and optimized rendering.",
+    title: "History Preserved in Stone",
+    desc: "These artifacts are not just objects; they're preserved voices of cultures, chronicling how people lived, worshiped, and ruled.",
   },
   {
     img: arti3,
-    title: "Firebase Authentication",
-    desc: "Secure login and registration powered by Firebase Auth.",
+    title: "Symbols of Identity & Belief",
+    desc: "From sacred scripts to ritual relics, every artifact reflects the spiritual and intellectual depth of its era.",
   },
   {
     img: arti4,
-    title: "Responsive Design",
-    desc: "Mobile-first layout that looks great on all screen sizes.",
+    title: "Craftsmanship Across Ages",
+    desc: "Explore masterpieces carved, forged, and painted by skilled hands — reminders of human creativity across centuries.",
   },
 ];
 
 export default function Hero() {
   return (
-    <div className="w-full py-10  text-white">
+    <div className="w-full py-14 bg-[#0d0d3f] text-white">
+      <motion.h1
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-4xl md:text-5xl font-bold text-center mb-10"
+      >
+        Discover the Stories Behind the Artifacts
+      </motion.h1>
+
+      {/* 🔹 Swiper Slider */}
       <Swiper
-        effect={"coverflow"}
+        effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        spaceBetween={30}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -51,27 +63,42 @@ export default function Hero() {
           modifier: 2.5,
           slideShadows: false,
         }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        pagination={{ clickable: true }}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
         className="mySwiper"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 rounded-xl shadow-lg p-6 w-[90vw] md:w-[70vw] h-[400px]">
-              <div className="text-left">
-                <h2 className="text-3xl font-bold mb-1 text-white">
+          <SwiperSlide
+            key={index}
+            className="!w-[90vw] md:!w-[70vw] flex justify-center"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-[#1b1b50] text-white rounded-xl shadow-xl overflow-hidden w-full h-full flex flex-col md:flex-row items-center justify-between p-6 gap-6"
+            >
+              <div className="md:w-1/2 space-y-3 text-left">
+                <h2 className="text-2xl md:text-3xl font-bold">
                   {slide.title}
                 </h2>
-                <p className="text-gray-300">{slide.desc}</p>
+                <p className="text-gray-300 text-sm md:text-base">
+                  {slide.desc}
+                </p>
               </div>
-              <div>
+              <div className="md:w-1/2">
                 <img
                   src={slide.img}
                   alt={slide.title}
                   className="rounded-lg w-full h-[250px] object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </SwiperSlide>
         ))}
       </Swiper>
