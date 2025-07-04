@@ -14,6 +14,8 @@ import PrivateRoute from "../context/PrivateRoute";
 import MyArtifact from "../pages/MyArtifact/MyArtifact";
 import Update from "../pages/Update/Update";
 import MyLikedArtifacts from "../pages/MyLikedArtifacts/MyLikedArtifacts";
+import Root2 from "../layouts/Root2";
+import Error from "../components/Error/Error";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +85,15 @@ const router = createBrowserRouter([
             <MyLikedArtifacts />
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    element: <Root2></Root2>,
+    children: [
+      {
+        path: "/*",
+        Component: Error,
       },
     ],
   },
