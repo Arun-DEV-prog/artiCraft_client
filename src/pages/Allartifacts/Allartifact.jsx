@@ -13,9 +13,12 @@ const Allartifact = () => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/searchartifacts", {
-        searchText,
-      });
+      const res = await axios.post(
+        "https://artifact-server-rust.vercel.app/searchartifacts",
+        {
+          searchText,
+        }
+      );
       setArtifact(res.data);
     } catch (error) {
       console.error("Search error:", error);
@@ -24,7 +27,9 @@ const Allartifact = () => {
 
   useEffect(() => {
     const fetchAll = async () => {
-      const res = await axios.get("http://localhost:3000/allartifacts");
+      const res = await axios.get(
+        "https://artifact-server-rust.vercel.app/allartifacts"
+      );
       setArtifact(res.data);
     };
     fetchAll();

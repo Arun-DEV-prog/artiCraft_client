@@ -3,6 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthProvider";
 import useApllicationApi from "../../api/useApllicationApi";
 import { Helmet } from "react-helmet";
+import Loading from "../../components/Loading";
 
 const MyLikedArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const MyLikedArtifacts = () => {
   useEffect(() => {
     if (user?.email) {
       // axios
-      //   .get(`http://localhost:3000/artifacts/liked?email=${user.email}`, {
+      //   .get(`https://artifact-server-rust.vercel.app/artifacts/liked?email=${user.email}`, {
       //     headers: {
       //       Authorization: `Bearer ${user.accessToken}`,
       //     },
@@ -24,17 +25,15 @@ const MyLikedArtifacts = () => {
         .finally(() => setLoading(false));
     }
   }, []);
-  console.log(artifacts);
+  // console.log(artifacts);
 
   if (loading) {
-    return (
-      <div className="text-center mt-20 text-gray-500 text-lg">Loading...</div>
-    );
+    return <Loading />;
   }
 
   if (!artifacts.length) {
     return (
-      <div className="text-center mt-20 text-gray-600 text-xl">
+      <div className="text-center mt-20 text-gray-600 text-xl min-h-[700px]">
         You haven't liked any artifacts yet.
       </div>
     );

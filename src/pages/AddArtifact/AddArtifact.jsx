@@ -38,13 +38,16 @@ const AddArtifact = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/artifacts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(artifact),
-      });
+      const res = await fetch(
+        "https://artifact-server-rust.vercel.app/artifacts",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(artifact),
+        }
+      );
 
       if (res.ok) {
         toast.success("Artifact added successfully!");

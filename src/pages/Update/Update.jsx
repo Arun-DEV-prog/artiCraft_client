@@ -49,13 +49,16 @@ const Update = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:3000/allartifacts/${_id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(artifact),
-      });
+      const res = await fetch(
+        `https://artifact-server-rust.vercel.app/allartifacts/${_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(artifact),
+        }
+      );
 
       if (res.ok) {
         Swal.fire("Success!", "Group Updated successfully!", "success");

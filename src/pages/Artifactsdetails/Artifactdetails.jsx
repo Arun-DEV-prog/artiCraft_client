@@ -23,8 +23,8 @@ const Artifactdetails = () => {
     if (!user?.email) return;
 
     const url = hasLiked
-      ? `http://localhost:3000/allartifacts/${id}/unlike`
-      : `http://localhost:3000/allartifacts/${id}/like`;
+      ? `https://artifact-server-rust.vercel.app/allartifacts/${id}/unlike`
+      : `https://artifact-server-rust.vercel.app/allartifacts/${id}/like`;
 
     try {
       const res = await axios.patch(url, {

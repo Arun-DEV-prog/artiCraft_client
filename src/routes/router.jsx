@@ -41,7 +41,9 @@ const router = createBrowserRouter([
       {
         path: "/allartifacts/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allartifacts/${params.id}`),
+          fetch(
+            `https://artifact-server-rust.vercel.app/allartifacts/${params.id}`
+          ),
         hydrateFallbackElement: Loading,
         element: (
           <PrivateRoute>
@@ -70,7 +72,9 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/allartifacts/${params.id}`),
+          fetch(
+            `https://artifact-server-rust.vercel.app/allartifacts/${params.id}`
+          ),
         hydrateFallbackElement: <Loading></Loading>,
         element: (
           <PrivateRoute>

@@ -82,7 +82,7 @@ const Login = () => {
             </button>
 
             <button
-              type="button"
+              type="submit"
               onClick={handleGoogleLogin}
               className="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 text-black rounded-md mt-3 hover:bg-gray-100 transition"
             >

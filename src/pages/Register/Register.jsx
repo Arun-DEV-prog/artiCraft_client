@@ -1,22 +1,25 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import register from "../../assets/Animation - 1751533746511.json";
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet";
 
 const Register = () => {
+  const navigate = useNavigate();
   const { signUp } = useContext(AuthContext);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const userData = Object.fromEntries(formData.entries());
-    console.log(userData.email);
+    // console.log(userData.email);
 
     signUp(userData.email, userData.password)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        navigate("/login");
+      })
+      .catch((err) => err);
   };
 
   return (

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 
 const axionInstance = axios.create({
-  baseURL: "http://localhost:3000/",
+  baseURL: "https://artifact-server-rust.vercel.app/",
 });
 
 const useAxiosSecure = () => {

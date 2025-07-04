@@ -5,7 +5,7 @@ const getJwtToken = async (user) => {
 
   const loggedUser = { email: user.email };
 
-  return axios.post("http://localhost:3000/jwt", loggedUser, {
+  return axios.post("https://artifact-server-rust.vercel.app/jwt", loggedUser, {
     withCredentials: true,
   });
 };

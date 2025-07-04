@@ -15,7 +15,7 @@ const MyArtifact = () => {
       try {
         if (user?.email) {
           const res = await axios.get(
-            `http://localhost:3000/artifacts?email=${user.email}`
+            `https://artifact-server-rust.vercel.app/artifacts?email=${user.email}`
           );
 
           // ✅ Fix: Ensure we access res.data.artifact (not full object)

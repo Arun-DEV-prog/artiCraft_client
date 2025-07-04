@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router";
 import "../Navber/navStyle.css";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
+
 const Navber = () => {
   const notify1 = () => toast("✅ LogOut Successfully");
   const { user, logOut } = useContext(AuthContext);
@@ -20,7 +21,7 @@ const Navber = () => {
     document.addEventListener("mousedown", handleShowUser);
     return () => document.removeEventListener("mousedown", handleShowUser);
   }, []);
-  console.log(user);
+  // console.log(user);
   const links = (
     <>
       <li>
@@ -77,7 +78,7 @@ const Navber = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 text-black rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>

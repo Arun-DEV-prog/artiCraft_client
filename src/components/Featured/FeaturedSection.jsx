@@ -12,7 +12,9 @@ const FeaturedSection = () => {
   useEffect(() => {
     const fetchArtifacts = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/allartifacts");
+        const res = await axios.get(
+          "https://artifact-server-rust.vercel.app/allartifacts"
+        );
         setArtifact(res.data);
         setLoading(false);
       } catch (err) {

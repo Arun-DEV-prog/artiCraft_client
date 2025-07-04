@@ -19,9 +19,12 @@ const MyArtifactCard = ({ data, onDelete }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/artifacts/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://artifact-server-rust.vercel.app/artifacts/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((resData) => {
             if (resData.deletedCount > 0) {
