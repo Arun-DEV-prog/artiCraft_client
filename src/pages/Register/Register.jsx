@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import register from "../../assets/Animation - 1751533746511.json";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { signUp } = useContext(AuthContext);
@@ -20,7 +21,9 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center back px-4 py-10 gap-10">
-      {/* Lottie animation */}
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="w-full max-w-md">
         <Lottie animationData={register} loop={true} />
       </div>

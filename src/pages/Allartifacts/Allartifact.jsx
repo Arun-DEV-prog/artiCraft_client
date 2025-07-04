@@ -4,6 +4,7 @@ import axios from "axios";
 import { NavLink } from "react-router";
 import { FaArrowRight } from "react-icons/fa6";
 import Loading from "../../components/Loading";
+import { Helmet } from "react-helmet";
 
 const Allartifact = () => {
   const { loading } = useContext(AuthContext);
@@ -33,6 +34,9 @@ const Allartifact = () => {
 
   return (
     <div className="back">
+      <Helmet>
+        <title>ALLArtifact</title>
+      </Helmet>
       <h1 className="text-center text-3xl p-5 italic">All Artifacts</h1>
 
       {/* 🔍 Search Input and Button */}

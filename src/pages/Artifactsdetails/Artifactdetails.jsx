@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData, useLocation, useParams } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Artifactdetails = () => {
   const { id } = useParams();
@@ -47,6 +48,9 @@ const Artifactdetails = () => {
 
   return (
     <div className="p-5 back text-black">
+      <Helmet>
+        <title>MyArtifactDetails</title>
+      </Helmet>
       <div className="rounded-md mx-auto shadow-md sm:w-96 bg-gray-50 dark:text-gray-800">
         <div className="flex items-center justify-between p-3">
           <h2 className="text-xl font-semibold">{artifactName}</h2>

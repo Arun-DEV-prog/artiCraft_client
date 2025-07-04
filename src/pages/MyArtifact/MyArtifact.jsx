@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import axios from "axios";
 import Loading from "../../components/Loading";
 import MyArtifactCard from "./MyArtifactCard";
+import { Helmet } from "react-helmet";
 
 const MyArtifact = () => {
   const { user, loading } = useContext(AuthContext);
@@ -40,6 +41,9 @@ const MyArtifact = () => {
 
   return (
     <div className="back min-h-screen py-8 px-4">
+      <Helmet>
+        <title>My Artifacts</title>
+      </Helmet>
       <h2 className="text-2xl font-bold text-center mb-6 text-white">
         My Artifacts
       </h2>

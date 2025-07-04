@@ -3,6 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { GoArrowUp } from "react-icons/go";
 import Swal from "sweetalert2";
 import { Link } from "react-router";
+import { Helmet } from "react-helmet";
 
 const MyArtifactCard = ({ data, onDelete }) => {
   const { _id, artifactName, image, description, likeCount } = data;
@@ -34,6 +35,9 @@ const MyArtifactCard = ({ data, onDelete }) => {
 
   return (
     <div className="rounded-md shadow-md bg-[#0d0d3f] dark:text-gray-800">
+      <Helmet>
+        <title>MyArtifact</title>
+      </Helmet>
       <div className="flex items-center justify-between p-4">
         <h2 className="text-xl font-semibold text-white">{artifactName}</h2>
       </div>

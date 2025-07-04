@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthProvider";
 import useApllicationApi from "../../api/useApllicationApi";
+import { Helmet } from "react-helmet";
 
 const MyLikedArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -41,6 +42,9 @@ const MyLikedArtifacts = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
+      <Helmet>
+        <title>MyLikedArtifacts</title>
+      </Helmet>
       {artifacts.map((artifact) => (
         <div
           key={artifact._id}

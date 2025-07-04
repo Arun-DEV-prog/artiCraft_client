@@ -4,10 +4,14 @@ import "./home.css";
 import FeaturedSection from "../Featured/FeaturedSection";
 import Testimonial from "../Testimonial/Testimonial";
 import Explore_era from "../Explore/Explore_era";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <div className="back min-h-screen">
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <div className=" w-11/12 md:h-[500px] mx-auto ">
         <Hero />
       </div>

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import Lottie from "lottie-react";
 import singin from "../../assets/Animation - 1750425542532 (1).json";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { signIn, googleLogin } = useContext(AuthContext);
@@ -34,6 +35,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center back px-4 py-10">
+      <Helmet>
+        <title>Login </title>
+      </Helmet>
       <div className="w-full max-w-6xl flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
         {/* Form Card */}
         <div className="w-full max-w-md bg-white shadow-2xl rounded-lg p-6">
