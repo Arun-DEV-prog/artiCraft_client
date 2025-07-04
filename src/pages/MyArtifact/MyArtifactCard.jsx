@@ -33,9 +33,9 @@ const MyArtifactCard = ({ data, onDelete }) => {
   };
 
   return (
-    <div className="rounded-md shadow-md bg-white dark:text-gray-800">
+    <div className="rounded-md shadow-md bg-[#0d0d3f] dark:text-gray-800">
       <div className="flex items-center justify-between p-4">
-        <h2 className="text-xl font-semibold text-black">{artifactName}</h2>
+        <h2 className="text-xl font-semibold text-white">{artifactName}</h2>
       </div>
 
       <img
@@ -45,11 +45,11 @@ const MyArtifactCard = ({ data, onDelete }) => {
       />
 
       <div className="p-4 space-y-3">
-        <p className="text-sm text-gray-700">
+        <p className="text-sm text-white">
           <span className="font-semibold">Likes:</span> {likeCount}
         </p>
 
-        <p className="text-[15px] text-gray-800">{description}</p>
+        <p className="text-[15px]  text-white">{description}</p>
 
         <input
           type="text"

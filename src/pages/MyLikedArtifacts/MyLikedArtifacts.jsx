@@ -1,22 +1,28 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthProvider";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthProvider";
+import useApllicationApi from "../../api/useApllicationApi";
 
 const MyLikedArtifacts = () => {
   const { user } = useContext(AuthContext);
   const [artifacts, setArtifacts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { myApplicationPromise } = useApllicationApi();
 
   useEffect(() => {
     if (user?.email) {
-      axios
-        .get(`http://localhost:3000/artifacts/liked?email=${user.email}`)
-        .then((res) => setArtifacts(res.data))
+      // axios
+      //   .get(`http://localhost:3000/artifacts/liked?email=${user.email}`, {
+      //     headers: {
+      //       Authorization: `Bearer ${user.accessToken}`,
+      //     },
+      //   })
+      myApplicationPromise(user.email)
+        .then((data) => setArtifacts(data))
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }
-  }, [user?.email]);
-
+  }, []);
   console.log(artifacts);
 
   if (loading) {
@@ -38,16 +44,15 @@ const MyLikedArtifacts = () => {
       {artifacts.map((artifact) => (
         <div
           key={artifact._id}
-          className="border p-4 rounded-xl shadow hover:shadow-md transition bg-white"
+          className="border p-4 rounded-xl shadow hover:shadow-md transition bg-[#0d0d3f]"
         >
-          <h1 className=" text-xl text-black mb-3">{artifact.artifactName}</h1>
           <img
             src={artifact.image}
             alt={artifact.artifactName}
             className="w-full h-48 object-cover mb-2 rounded"
           />
-          <h3 className="text-lg font-bold">{artifact.artifactName}</h3>
-          <p className="text-sm text-gray-700 line-clamp-3">
+          <h3 className="text-lg font-bold mb-1">{artifact.artifactName}</h3>
+          <p className="text-sm text-white line-clamp-3">
             {artifact.description}
           </p>
         </div>

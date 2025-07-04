@@ -6,12 +6,11 @@ import Lottie from "lottie-react";
 import singin from "../../assets/Animation - 1750425542532 (1).json";
 
 const Login = () => {
-  const notify = () => toast("✅ Login Successfully");
   const { signIn, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/allartifacts";
-  console.log(from);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,12 +24,12 @@ const Login = () => {
       .catch(() => toast.error("❌ Login failed. Please try again."));
   };
 
-  const handlGoogleLogin = () => {
+  const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
         navigate(from, { replace: true });
       })
-      .catch(() => toast.error("❌ Login failed. Please try again."));
+      .catch(() => toast.error("❌ Google login failed. Please try again."));
   };
 
   return (
@@ -80,9 +79,10 @@ const Login = () => {
 
             <button
               type="button"
-              onClick={handlGoogleLogin}
+              onClick={handleGoogleLogin}
               className="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 text-black rounded-md mt-3 hover:bg-gray-100 transition"
             >
+              {/* Google SVG */}
               <svg width="18" height="18" viewBox="0 0 512 512">
                 <path
                   fill="#34a853"

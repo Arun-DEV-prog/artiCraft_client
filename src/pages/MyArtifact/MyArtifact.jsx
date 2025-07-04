@@ -16,10 +16,18 @@ const MyArtifact = () => {
           const res = await axios.get(
             `http://localhost:3000/artifacts?email=${user.email}`
           );
-          setArtifact(res.data || []);
+
+          // ✅ Fix: Ensure we access res.data.artifact (not full object)
+          if (Array.isArray(res.data.artifact)) {
+            setArtifact(res.data.artifact);
+          } else {
+            console.warn("Expected array but got:", res.data);
+            setArtifact([]); // fallback
+          }
         }
       } catch (error) {
         console.error("Error fetching artifacts:", error);
+        setArtifact([]); // fallback in case of failure
       } finally {
         setFetching(false);
       }
@@ -31,8 +39,8 @@ const MyArtifact = () => {
   if (loading || fetching) return <Loading />;
 
   return (
-    <div className="bg-gray-100 min-h-screen py-8 px-4">
-      <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
+    <div className="back min-h-screen py-8 px-4">
+      <h2 className="text-2xl font-bold text-center mb-6 text-white">
         My Artifacts
       </h2>
 

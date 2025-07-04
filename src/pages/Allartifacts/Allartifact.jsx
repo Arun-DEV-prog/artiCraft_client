@@ -59,7 +59,7 @@ const Allartifact = () => {
             .map((artifact) => (
               <div
                 key={artifact._id}
-                className="border rounded shadow p-4 bg-white hover:shadow-lg transition"
+                className="border rounded shadow p-4 bg-[#0d0d3f] hover:shadow-lg transition"
               >
                 <img
                   src={artifact.image}
@@ -69,7 +69,7 @@ const Allartifact = () => {
                 <h2 className="text-xl font-bold mt-2">
                   {artifact.artifactName}
                 </h2>
-                <p className="text-gray-600">{artifact.shortDescription}</p>
+                <p className="text-white">{artifact.shortDescription}</p>
                 <div className="flex justify-between">
                   <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
                     Likes : {artifact.likeCount}
@@ -84,7 +84,7 @@ const Allartifact = () => {
               </div>
             ))
         ) : (
-          <p className="text-center min-h-[900px] col-span-3 text-gray-500 text-lg">
+          <p className="text-center min-h-[500px] col-span-3 text-gray-500 text-lg">
             No artifacts found.
           </p>
         )}
