@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router";
 import "../Navber/navStyle.css";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaArrowUpFromBracket } from "react-icons/fa6";
 
 const Navber = () => {
   const notify1 = () => toast("✅ LogOut Successfully");
@@ -38,11 +40,10 @@ const Navber = () => {
           )}
         </NavLink>
       </li>
-      {user && (
-        <li>
-          <NavLink to="/addartifact">Add Artifacts</NavLink>
-        </li>
-      )}
+
+      <li>
+        <NavLink to="/addartifact">Add Artifacts</NavLink>
+      </li>
     </>
   );
 
@@ -57,8 +58,8 @@ const Navber = () => {
   };
 
   return (
-    <div className="navbar  sticky top-0 bg-[#1974cf] z-30 ">
-      <div className="navbar-start">
+    <div className="navbar  sticky top-0 bg-[#f8f8f8] shadow-md z-30  ">
+      <div className="navbar-start pl-5 pr-5 ">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn  lg:hidden">
             <svg
@@ -84,18 +85,28 @@ const Navber = () => {
           </ul>
         </div>
 
-        <a className="text-xl  text-white font-[--font-playwrite]">Artifacts</a>
+        <a className="text-3xl italic font-bold   text-black font-[--font-playwrite]">
+          Arti<span className="text-yellow-500">F</span>acts
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal text-black text-[16px] px-1">
+          {links}
+        </ul>
       </div>
       <div className="navbar-end space-x-3">
         {user ? (
           ""
         ) : (
-          <NavLink className="btn" to="/login">
-            Login
-          </NavLink>
+          <>
+            <NavLink className=" btn text-[16px] text-black " to="/login">
+              <FaArrowRightFromBracket /> Sign In
+            </NavLink>
+
+            <NavLink className=" btn text-[16px] text-black" to="/register">
+              <FaArrowUpFromBracket /> Sign Up
+            </NavLink>
+          </>
         )}
 
         <div className=" relative inline-block text-left" ref={dropdownRef}>

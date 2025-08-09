@@ -1,5 +1,7 @@
-a.active :hover {
-   
-  border-bottom: red;
+a.active, a:hover {
+
+border-bottom:2px solid red;
+ transition: 0.5s ease;
+
  
 }
