@@ -15,7 +15,6 @@ const Navber = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  // Close dropdown on outside click
   useEffect(() => {
     const handleOutsideClick = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -85,9 +84,9 @@ const Navber = () => {
       }`}
     >
       <div className="navbar flex justify-between items-center h-16 max-w-7xl mx-auto">
-        {/* Left side: logo and hamburger for mobile */}
+        {/* Left side */}
         <div className="flex items-center space-x-4">
-          {/* Mobile hamburger */}
+          {/* Hamburger - color changes with theme */}
           <button
             onClick={toggleMobileMenu}
             className={`lg:hidden btn btn-ghost btn-circle p-0 ${
@@ -96,7 +95,6 @@ const Navber = () => {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              // Close icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -112,7 +110,6 @@ const Navber = () => {
                 />
               </svg>
             ) : (
-              // Hamburger icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -133,7 +130,7 @@ const Navber = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className={`text-3xl italic font-bold font-playwrite transition-colors duration-300 ${
+            className={`text-3xl italic hidden md:flex font-bold font-playwrite transition-colors duration-300 ${
               darkMode ? "text-white" : "text-black"
             }`}
             onClick={() => setMobileMenuOpen(false)}
@@ -142,7 +139,7 @@ const Navber = () => {
           </NavLink>
         </div>
 
-        {/* Desktop links */}
+        {/* Desktop menu */}
         <ul
           className={`hidden lg:flex space-x-8 text-[16px] transition-colors duration-300 ${
             darkMode ? "text-white" : "text-black"
@@ -151,20 +148,20 @@ const Navber = () => {
           {links}
         </ul>
 
-        {/* Right side user/auth */}
+        {/* Right side */}
         <div className="flex items-center space-x-4">
           {!user ? (
             <>
               <NavLink
                 to="/login"
-                className="btn bg-blue-500 text-black text-[16px] flex items-center space-x-2"
+                className="btn bg-blue-500 hidden text-black text-[16px] md:flex items-center space-x-2"
               >
                 <FaArrowRightFromBracket />
                 <span>Sign In</span>
               </NavLink>
               <NavLink
                 to="/register"
-                className="btn bg-blue-500 text-black text-[16px] flex items-center space-x-2"
+                className="btn bg-blue-500 hidden text-black text-[16px] md:flex items-center space-x-2"
               >
                 <FaArrowUpFromBracket />
                 <span>Sign Up</span>
@@ -183,15 +180,12 @@ const Navber = () => {
             </>
           ) : (
             <>
-              {/* User Photo */}
               <img
                 src={user.photoURL}
                 alt={user.displayName || "User"}
                 className="w-10 h-10 rounded-full object-cover border-2 border-gray-300 dark:border-gray-600"
                 title={user.displayName || "User"}
               />
-
-              {/* Profile button and dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={toggleDropdown}
@@ -200,13 +194,9 @@ const Navber = () => {
                       ? "text-white border-white hover:bg-gray-700"
                       : "text-gray-700 border-gray-700 hover:bg-gray-100"
                   }`}
-                  aria-expanded={openDropdown}
-                  aria-haspopup="true"
-                  type="button"
                 >
                   Profile
                 </button>
-
                 {openDropdown && (
                   <div
                     className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50 border transition-colors duration-300 ${
@@ -222,7 +212,7 @@ const Navber = () => {
                           setOpenDropdown(false);
                           setMobileMenuOpen(false);
                         }}
-                        className="px-4 py-2 hover:bg-yellow-100 dark:hover:bg-yellow-600 cursor-pointer transition-colors"
+                        className="px-4 py-2 hover:bg-yellow-100 dark:hover:bg-yellow-600 cursor-pointer"
                       >
                         My Artifacts
                       </li>
@@ -232,7 +222,7 @@ const Navber = () => {
                           setOpenDropdown(false);
                           setMobileMenuOpen(false);
                         }}
-                        className="px-4 py-2 hover:bg-yellow-100 dark:hover:bg-yellow-600 cursor-pointer transition-colors"
+                        className="px-4 py-2 hover:bg-yellow-100 dark:hover:bg-yellow-600 cursor-pointer"
                       >
                         Liked Artifacts
                       </li>
@@ -240,7 +230,7 @@ const Navber = () => {
                     <div className="border-t border-gray-300 dark:border-gray-600">
                       <button
                         onClick={handleLogout}
-                        className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 dark:hover:bg-red-700 dark:text-red-400 cursor-pointer transition-colors"
+                        className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 dark:hover:bg-red-700 dark:text-red-400"
                       >
                         Logout
                       </button>
@@ -250,7 +240,6 @@ const Navber = () => {
               </div>
             </>
           )}
-          {/* Dark mode toggle button for logged in users */}
           {user && (
             <button
               onClick={() => setDarkMode(!darkMode)}
@@ -277,6 +266,30 @@ const Navber = () => {
           } text-lg flex flex-col space-y-2 p-4`}
         >
           {links}
+          {!user && (
+            <>
+              <li>
+                <NavLink
+                  to="/login"
+                  className="btn bg-blue-500 text-black flex items-center space-x-2 w-full justify-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <FaArrowRightFromBracket />
+                  <span>Sign In</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/register"
+                  className="btn bg-blue-500 text-black flex items-center space-x-2 w-full justify-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <FaArrowUpFromBracket />
+                  <span>Sign Up</span>
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       )}
     </nav>

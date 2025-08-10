@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 import Lottie from "lottie-react";
 import singin from "../../assets/Animation - 1750425542532 (1).json";
 import { Helmet } from "react-helmet";
+import { useTheme } from "../../context/ThemeContext";
 
 const Login = () => {
   const { signIn, googleLogin } = useContext(AuthContext);
+  const { darkMode } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/allartifacts";
@@ -34,19 +36,35 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center back px-4 py-10">
+    <div
+      className={`min-h-screen flex items-center justify-center px-4 py-10 transition-colors duration-300 ${
+        darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
+      }`}
+    >
       <Helmet>
-        <title>Login </title>
+        <title>Login</title>
       </Helmet>
       <div className="w-full max-w-6xl flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-20">
         {/* Form Card */}
-        <div className="w-full max-w-md bg-white shadow-2xl rounded-lg p-6">
-          <h1 className="text-3xl lg:text-4xl font-bold text-center text-black mb-6">
+        <div
+          className={`w-full max-w-md shadow-2xl rounded-lg p-6 transition-colors duration-300 ${
+            darkMode ? "bg-gray-800" : "bg-white"
+          }`}
+        >
+          <h1
+            className={`text-3xl lg:text-4xl font-bold text-center mb-6 ${
+              darkMode ? "text-white" : "text-black"
+            }`}
+          >
             Login now!
           </h1>
           <form onSubmit={handleFormSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label
+                className={`block text-sm font-medium ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
                 Email
               </label>
               <input
@@ -54,11 +72,19 @@ const Login = () => {
                 name="email"
                 required
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 border rounded-md mt-1 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className={`w-full px-4 py-2 border rounded-md mt-1 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
+                  darkMode
+                    ? "bg-gray-700 text-white border-gray-600"
+                    : "bg-white text-black border-gray-300"
+                }`}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label
+                className={`block text-sm font-medium ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
                 Password
               </label>
               <input
@@ -66,10 +92,18 @@ const Login = () => {
                 name="password"
                 required
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border rounded-md mt-1 text-black placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className={`w-full px-4 py-2 border rounded-md mt-1 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
+                  darkMode
+                    ? "bg-gray-700 text-white border-gray-600"
+                    : "bg-white text-black border-gray-300"
+                }`}
               />
             </div>
-            <div className="flex justify-between text-sm text-gray-600">
+            <div
+              className={`flex justify-between text-sm ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
               <a href="#" className="hover:underline">
                 Forgot password?
               </a>
@@ -82,11 +116,14 @@ const Login = () => {
             </button>
 
             <button
-              type="submit"
+              type="button"
               onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center gap-2 py-2 border border-gray-300 text-black rounded-md mt-3 hover:bg-gray-100 transition"
+              className={`w-full flex items-center justify-center gap-2 py-2 border rounded-md mt-3 transition-colors ${
+                darkMode
+                  ? "border-gray-500 text-white hover:bg-gray-700"
+                  : "border-gray-300 text-black hover:bg-gray-100"
+              }`}
             >
-              {/* Google SVG */}
               <svg width="18" height="18" viewBox="0 0 512 512">
                 <path
                   fill="#34a853"
@@ -108,9 +145,16 @@ const Login = () => {
               Login with Google
             </button>
 
-            <p className="text-sm text-black text-center mt-4">
+            <p
+              className={`text-sm text-center mt-4 ${
+                darkMode ? "text-gray-300" : "text-black"
+              }`}
+            >
               Don't have an account?
-              <Link to="/register" className="text-blue-600 font-medium ml-1">
+              <Link
+                to="/register"
+                className="text-blue-500 font-medium ml-1 hover:underline"
+              >
                 Register
               </Link>
             </p>
