@@ -25,17 +25,13 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/artifacts" className="hover:text-white">
+              <a href="/allartifacts" className="hover:text-white">
                 All Artifacts
               </a>
             </li>
+
             <li>
-              <a href="/myliked" className="hover:text-white">
-                My Liked
-              </a>
-            </li>
-            <li>
-              <a href="/add-artifact" className="hover:text-white">
+              <a href="/addartifact" className="hover:text-white">
                 Add Artifact
               </a>
             </li>
@@ -93,16 +89,23 @@ const Footer = () => {
         <div>
           <h2 className="text-xl font-semibold mb-3">Connect With Us</h2>
           <div className="flex gap-4 mt-2">
-            <a href="#" className="text-gray-300 hover:text-white">
+            <a
+              href="https://www.facebook.com/arunkumar.roy.52090008/"
+              className="text-gray-300 hover:text-white"
+            >
               <FaFacebookF />
             </a>
-            <a href="#" className="text-gray-300 hover:text-white">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-gray-300 hover:text-white">
+
+            <a
+              href="https://github.com/Arun-DEV-prog"
+              className="text-gray-300 hover:text-white"
+            >
               <FaGithub />
             </a>
-            <a href="#" className="text-gray-300 hover:text-white">
+            <a
+              href="www.linkedin.com/in/arunkumar-roy"
+              className="text-gray-300 hover:text-white"
+            >
               <FaLinkedinIn />
             </a>
           </div>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 import Swal from "sweetalert2";
-import { Navigate, useLoaderData, useNavigate } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 
 const Update = () => {
   const { user } = useContext(AuthContext);
@@ -31,6 +31,7 @@ const Update = () => {
     discoveredBy: "",
     location: "",
   });
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -61,11 +62,10 @@ const Update = () => {
       );
 
       if (res.ok) {
-        Swal.fire("Success!", "Group Updated successfully!", "success");
-
+        Swal.fire("Success!", "Artifact Updated successfully!", "success");
         navigate("/my-artifacts");
       } else {
-        Swal.fire("Error", "Failed to Update group.", "error");
+        Swal.fire("Error", "Failed to update artifact.", "error");
       }
     } catch (err) {
       Swal.fire("Error", err.message, "error");
@@ -73,9 +73,9 @@ const Update = () => {
   };
 
   return (
-    <div className=" back p-4">
-      <div className="max-w-3xl mx-auto p-8  bg-black rounded-xl shadow ">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
+    <div className="back p-4 bg-white mt-7 dark:bg-gray-900 min-h-screen">
+      <div className="max-w-3xl mx-auto p-8 rounded-xl shadow bg-gray-100 dark:bg-gray-800">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-900 dark:text-white">
           Update Your Artifact
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -86,7 +86,7 @@ const Update = () => {
             onChange={handleChange}
             defaultValue={artifactName}
             required
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <input
@@ -96,14 +96,14 @@ const Update = () => {
             defaultValue={image}
             onChange={handleChange}
             required
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <select
             name="type"
             defaultValue={type}
             onChange={handleChange}
-            className="w-full border bg-black px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           >
             <option>Tools</option>
             <option>Weapons</option>
@@ -117,7 +117,7 @@ const Update = () => {
             placeholder="Historical Context"
             defaultValue={context}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <textarea
@@ -125,7 +125,7 @@ const Update = () => {
             placeholder="Short Description"
             defaultValue={description}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <input
@@ -134,7 +134,7 @@ const Update = () => {
             placeholder="Created At (e.g., 100 BC)"
             defaultValue={createdAt}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <input
@@ -143,7 +143,7 @@ const Update = () => {
             placeholder="Discovered At (e.g., 1799)"
             defaultValue={discoveredAt}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <input
@@ -152,7 +152,7 @@ const Update = () => {
             placeholder="Discovered By"
             defaultValue={discoveredBy}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
           <input
@@ -161,27 +161,27 @@ const Update = () => {
             placeholder="Present Location"
             defaultValue={location}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
           />
 
-          <div className="grid  md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
               value={user?.displayName || ""}
               readOnly
-              className="w-full border px-4 py-2 rounded bg-black"
+              className="w-full border border-gray-300 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
             />
             <input
               type="email"
               value={user?.email || ""}
               readOnly
-              className="w-full border px-4 py-2 rounded bg-black"
+              className="w-full border border-gray-300 dark:border-gray-600 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-4 py-2 rounded"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 transition text-white py-2 rounded"
           >
             Update Artifact
           </button>

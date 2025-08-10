@@ -47,7 +47,7 @@ const Artifactdetails = () => {
   const { image, artifactName, description } = userData;
 
   return (
-    <div className="p-5 back text-black min-h-screen">
+    <div className="p-5 back min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <Helmet>
         <title>MyArtifactDetails</title>
       </Helmet>
@@ -58,7 +58,7 @@ const Artifactdetails = () => {
       </h2>
 
       {/* Content: Image Left, Description Card Right */}
-      <div className="max-w-5xl mx-auto bg-gray-50 rounded-md shadow-md p-6 flex flex-col md:flex-row gap-8">
+      <div className="max-w-5xl mx-auto bg-gray-50 dark:bg-gray-800 rounded-md shadow-md p-6 flex flex-col md:flex-row gap-8">
         {/* Image */}
         <div className="md:w-1/2 flex justify-center items-start">
           <img
@@ -69,8 +69,8 @@ const Artifactdetails = () => {
         </div>
 
         {/* Description card with centered text */}
-        <div className="md:w-1/2 flex flex-col justify-center items-center bg-white rounded-lg p-8 shadow-lg">
-          <p className="text-gray-800 text-base leading-relaxed text-center mb-6">
+        <div className="md:w-1/2 flex flex-col justify-center items-center bg-white dark:bg-gray-700 rounded-lg p-8 shadow-lg">
+          <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed text-center mb-6">
             {description}
           </p>
 
@@ -81,19 +81,23 @@ const Artifactdetails = () => {
               onClick={handleLikeToggle}
               title={hasLiked ? "Unlike" : "Like"}
               className={`text-4xl transition-transform ${
-                hasLiked ? "text-red-600" : "text-gray-400 hover:text-red-500"
+                hasLiked
+                  ? "text-red-600 dark:text-red-400"
+                  : "text-gray-400 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
               } ${animateLike ? "scale-125" : ""}`}
             >
               {hasLiked ? "❤️" : "🤍"}
             </button>
             <span
               className={`text-lg font-semibold transition-colors ${
-                animateLike ? "text-red-600 scale-110" : "text-gray-700"
+                animateLike
+                  ? "text-red-600 dark:text-red-400 scale-110"
+                  : "text-gray-700 dark:text-gray-300"
               }`}
             >
               {likeCount1}
             </span>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 dark:text-gray-400">
               Liked by <span className="font-bold">{likeCount1}</span> users
             </div>
           </div>

@@ -3,9 +3,12 @@ import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
 import { FaArrowRightFromBracket, FaArrowUpFromBracket } from "react-icons/fa6";
+import { useTheme } from "../../context/ThemeContext";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const Navber = () => {
   const notifyLogout = () => toast.success("✅ Logged out successfully");
+  const { darkMode, setDarkMode } = useTheme();
   const { user, logOut } = useContext(AuthContext);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,14 +41,17 @@ const Navber = () => {
       });
   };
 
+  const linkClass = ({ isActive }) =>
+    isActive
+      ? "text-yellow-500 font-semibold"
+      : "hover:text-yellow-500 dark:hover:text-yellow-400";
+
   const links = (
     <>
       <li>
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            isActive ? "text-yellow-500 font-semibold" : "hover:text-yellow-500"
-          }
+          className={linkClass}
           onClick={() => setMobileMenuOpen(false)}
         >
           Home
@@ -54,9 +60,7 @@ const Navber = () => {
       <li>
         <NavLink
           to="/allartifacts"
-          className={({ isActive }) =>
-            isActive ? "text-yellow-500 font-semibold" : "hover:text-yellow-500"
-          }
+          className={linkClass}
           onClick={() => setMobileMenuOpen(false)}
         >
           All Artifacts
@@ -65,9 +69,7 @@ const Navber = () => {
       <li>
         <NavLink
           to="/addartifact"
-          className={({ isActive }) =>
-            isActive ? "text-yellow-500 font-semibold" : "hover:text-yellow-500"
-          }
+          className={linkClass}
           onClick={() => setMobileMenuOpen(false)}
         >
           Add Artifacts
@@ -77,14 +79,20 @@ const Navber = () => {
   );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-[#f8f8f8] shadow-md z-50 px-5">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 px-5 shadow-md transition-colors duration-300 ${
+        darkMode ? "bg-gray-900 text-white" : "bg-[#f8f8f8] text-black"
+      }`}
+    >
       <div className="navbar flex justify-between items-center h-16 max-w-7xl mx-auto">
         {/* Left side: logo and hamburger for mobile */}
         <div className="flex items-center space-x-4">
           {/* Mobile hamburger */}
           <button
             onClick={toggleMobileMenu}
-            className="lg:hidden btn btn-ghost btn-circle p-0 text-black"
+            className={`lg:hidden btn btn-ghost btn-circle p-0 ${
+              darkMode ? "text-white" : "text-black"
+            }`}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -125,7 +133,9 @@ const Navber = () => {
           {/* Logo */}
           <NavLink
             to="/"
-            className="text-3xl italic font-bold text-black font-[--font-playwrite]"
+            className={`text-3xl italic font-bold font-playwrite transition-colors duration-300 ${
+              darkMode ? "text-white" : "text-black"
+            }`}
             onClick={() => setMobileMenuOpen(false)}
           >
             Arti<span className="text-yellow-500">F</span>acts
@@ -133,7 +143,11 @@ const Navber = () => {
         </div>
 
         {/* Desktop links */}
-        <ul className="hidden lg:flex space-x-8 text-black text-[16px]">
+        <ul
+          className={`hidden lg:flex space-x-8 text-[16px] transition-colors duration-300 ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
           {links}
         </ul>
 
@@ -155,6 +169,17 @@ const Navber = () => {
                 <FaArrowUpFromBracket />
                 <span>Sign Up</span>
               </NavLink>
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="btn btn-ghost text-xl"
+                aria-label="Toggle Dark Mode"
+              >
+                {darkMode ? (
+                  <FiSun className="text-yellow-400" />
+                ) : (
+                  <FiMoon className="text-gray-800" />
+                )}
+              </button>
             </>
           ) : (
             <>
@@ -162,7 +187,7 @@ const Navber = () => {
               <img
                 src={user.photoURL}
                 alt={user.displayName || "User"}
-                className="w-10 h-10 rounded-full object-cover border-2 border-gray-300"
+                className="w-10 h-10 rounded-full object-cover border-2 border-gray-300 dark:border-gray-600"
                 title={user.displayName || "User"}
               />
 
@@ -170,7 +195,11 @@ const Navber = () => {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={toggleDropdown}
-                  className="btn btn-outline text-gray-700"
+                  className={`btn btn-outline transition-colors duration-300 ${
+                    darkMode
+                      ? "text-white border-white hover:bg-gray-700"
+                      : "text-gray-700 border-gray-700 hover:bg-gray-100"
+                  }`}
                   aria-expanded={openDropdown}
                   aria-haspopup="true"
                   type="button"
@@ -179,14 +208,21 @@ const Navber = () => {
                 </button>
 
                 {openDropdown && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg z-50">
-                    <ul className="text-gray-700 text-sm">
+                  <div
+                    className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg z-50 border transition-colors duration-300 ${
+                      darkMode
+                        ? "bg-gray-800 border-gray-700 text-white"
+                        : "bg-white border-gray-200 text-gray-700"
+                    }`}
+                  >
+                    <ul>
                       <li
                         onClick={() => {
                           navigate("/my-artifacts");
                           setOpenDropdown(false);
+                          setMobileMenuOpen(false);
                         }}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        className="px-4 py-2 hover:bg-yellow-100 dark:hover:bg-yellow-600 cursor-pointer transition-colors"
                       >
                         My Artifacts
                       </li>
@@ -194,16 +230,17 @@ const Navber = () => {
                         onClick={() => {
                           navigate("/liked-artifacts");
                           setOpenDropdown(false);
+                          setMobileMenuOpen(false);
                         }}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        className="px-4 py-2 hover:bg-yellow-100 dark:hover:bg-yellow-600 cursor-pointer transition-colors"
                       >
                         Liked Artifacts
                       </li>
                     </ul>
-                    <div className="border-t">
+                    <div className="border-t border-gray-300 dark:border-gray-600">
                       <button
                         onClick={handleLogout}
-                        className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 cursor-pointer"
+                        className="w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 dark:hover:bg-red-700 dark:text-red-400 cursor-pointer transition-colors"
                       >
                         Logout
                       </button>
@@ -213,12 +250,32 @@ const Navber = () => {
               </div>
             </>
           )}
+          {/* Dark mode toggle button for logged in users */}
+          {user && (
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="btn btn-ghost text-xl"
+              aria-label="Toggle Dark Mode"
+            >
+              {darkMode ? (
+                <FiSun className="text-yellow-400" />
+              ) : (
+                <FiMoon className="text-gray-800" />
+              )}
+            </button>
+          )}
         </div>
       </div>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <ul className="lg:hidden border-t border-gray-300 text-black text-lg flex flex-col space-y-2 p-4">
+        <ul
+          className={`lg:hidden border-t transition-colors duration-300 ${
+            darkMode
+              ? "bg-gray-900 border-gray-700 text-white"
+              : "bg-[#f8f8f8] border-gray-300 text-black"
+          } text-lg flex flex-col space-y-2 p-4`}
+        >
           {links}
         </ul>
       )}

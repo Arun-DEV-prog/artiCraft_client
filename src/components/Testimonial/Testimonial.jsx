@@ -29,11 +29,11 @@ const Testimonial = () => {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         <h2
           data-aos="fade-up"
-          className="text-3xl racing-sans-one-regular text-blue-500 font-bold text-center mb-10"
+          className="text-3xl racing-sans-one-regular text-blue-500 dark:text-blue-400 font-bold text-center mb-10"
         >
           💬 Visitor Impressions
         </h2>
@@ -43,17 +43,17 @@ const Testimonial = () => {
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 150} // Stagger animation for each card
-              className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center"
+              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition duration-300 flex flex-col items-center text-center"
             >
               <img
                 src={user.avatar}
                 alt={user.name}
-                className="w-16 h-16 rounded-full border-2 border-gray-200 mb-4"
+                className="w-16 h-16 rounded-full border-2 border-gray-200 dark:border-gray-700 mb-4"
               />
-              <p className="text-gray-700 text-lg italic leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 text-lg italic leading-relaxed">
                 "{user.comment}"
               </p>
-              <p className="text-sm font-playwrite text-gray-900 mt-4">
+              <p className="text-sm font-playwrite text-gray-900 dark:text-gray-100 mt-4">
                 — {user.name}
               </p>
             </div>

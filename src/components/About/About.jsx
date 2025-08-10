@@ -31,11 +31,11 @@ const About = () => {
   ];
 
   return (
-    <section className="bg-white py-20 px-6">
+    <section className="bg-white dark:bg-gray-900 py-20 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <h2
           data-aos="fade-up"
-          className="text-4xl font-bold text-blue-600 mb-16"
+          className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-16"
         >
           What You Can Do on ArtiFacts
         </h2>
@@ -45,12 +45,12 @@ const About = () => {
               key={index}
               data-aos="fade-up"
               data-aos-delay={index * 250}
-              className="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
+              className="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
             >
-              <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
                 {feature.title}
               </h3>
-              <p className="text-gray-700 text-lg leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                 {feature.description}
               </p>
             </div>

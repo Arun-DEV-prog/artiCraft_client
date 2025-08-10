@@ -18,17 +18,16 @@ const MyArtifact = () => {
             `https://artifact-server-rust.vercel.app/artifacts?email=${user.email}`
           );
 
-          // ✅ Fix: Ensure we access res.data.artifact (not full object)
           if (Array.isArray(res.data.artifact)) {
             setArtifact(res.data.artifact);
           } else {
             console.warn("Expected array but got:", res.data);
-            setArtifact([]); // fallback
+            setArtifact([]);
           }
         }
       } catch (error) {
         console.error("Error fetching artifacts:", error);
-        setArtifact([]); // fallback in case of failure
+        setArtifact([]);
       } finally {
         setFetching(false);
       }
@@ -40,17 +39,17 @@ const MyArtifact = () => {
   if (loading || fetching) return <Loading />;
 
   return (
-    <div className="back min-h-screen py-8 px-4">
+    <div className="back min-h-screen py-8 px-4 bg-white dark:bg-gray-900">
       <Helmet>
         <title>My Artifacts</title>
       </Helmet>
-      <h2 className="text-2xl font-bold text-center mb-6 text-white">
+      <h2 className="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">
         My Artifacts
       </h2>
 
       {artifact.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-20">
-          <h1 className="text-xl text-gray-600 font-medium">
+          <h1 className="text-xl text-gray-600 dark:text-gray-400 font-medium">
             You haven't added any artifacts yet.
           </h1>
         </div>

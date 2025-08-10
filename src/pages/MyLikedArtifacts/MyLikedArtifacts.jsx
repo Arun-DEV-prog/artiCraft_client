@@ -13,19 +13,12 @@ const MyLikedArtifacts = () => {
 
   useEffect(() => {
     if (user?.email) {
-      // axios
-      //   .get(`https://artifact-server-rust.vercel.app/artifacts/liked?email=${user.email}`, {
-      //     headers: {
-      //       Authorization: `Bearer ${user.accessToken}`,
-      //     },
-      //   })
       myApplicationPromise(user.email)
         .then((data) => setArtifacts(data))
         .catch((err) => console.error(err))
         .finally(() => setLoading(false));
     }
-  }, []);
-  // console.log(artifacts);
+  }, [user?.email]);
 
   if (loading) {
     return <Loading />;
@@ -33,29 +26,32 @@ const MyLikedArtifacts = () => {
 
   if (!artifacts.length) {
     return (
-      <div className="text-center mt-20 text-gray-600 text-xl min-h-[700px]">
+      <div className="text-center mt-20 text-gray-600 dark:text-gray-400 text-xl min-h-[700px]">
         You haven't liked any artifacts yet.
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
+    <div className="grid grid-cols-1 mt-10 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5 bg-white dark:bg-gray-900 min-h-screen">
       <Helmet>
         <title>MyLikedArtifacts</title>
       </Helmet>
+
       {artifacts.map((artifact) => (
         <div
           key={artifact._id}
-          className=" p-4 rounded-xl shadow hover:shadow-md transition "
+          className="p-4 rounded-xl shadow hover:shadow-md transition bg-gray-100 dark:bg-gray-800"
         >
           <img
             src={artifact.image}
             alt={artifact.artifactName}
             className="w-full h-48 object-cover mb-2 rounded"
           />
-          <h3 className="text-lg font-bold mb-1">{artifact.artifactName}</h3>
-          <p className="text-sm text-white line-clamp-3">
+          <h3 className="text-lg font-bold mb-1 text-gray-900 dark:text-gray-100">
+            {artifact.artifactName}
+          </h3>
+          <p className="text-sm text-gray-700 dark:text-gray-300 line-clamp-3">
             {artifact.description}
           </p>
         </div>

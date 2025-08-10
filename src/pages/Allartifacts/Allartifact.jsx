@@ -38,23 +38,25 @@ const Allartifact = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="back">
+    <div className="back bg-white dark:bg-gray-900 min-h-screen">
       <Helmet>
         <title>ALLArtifact</title>
       </Helmet>
-      <h1 className="text-center text-3xl p-5 italic">All Artifacts</h1>
+      <h1 className="text-center text-3xl p-5 italic text-gray-900 dark:text-gray-100">
+        All Artifacts
+      </h1>
 
       {/* 🔍 Search Input and Button */}
       <div className="max-w-md mx-auto mb-6 px-5 flex gap-2">
         <input
           type="text"
           placeholder="Search by artifact name..."
-          className="w-full p-2 border border-gray-300 rounded"
+          className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
         <button
-          className="bg-blue-600 text-white px-4 rounded"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded"
           onClick={handleSearch}
         >
           Search
@@ -68,26 +70,26 @@ const Allartifact = () => {
             .map((artifact) => (
               <div
                 key={artifact._id}
-                className=" bg-[#f8f8f8] rounded shadow p-4  hover:shadow-lg transition"
+                className="bg-[#f8f8f8] dark:bg-gray-800 rounded shadow p-4 hover:shadow-lg transition"
               >
                 <img
                   src={artifact.image}
                   alt={artifact.artifactName}
                   className="w-full h-48 object-cover rounded"
                 />
-                <h2 className="text-xl racing-sans-one-regular font-bold mt-2">
+                <h2 className="text-xl racing-sans-one-regular font-bold mt-2 text-gray-900 dark:text-gray-100">
                   {artifact.artifactName}
                 </h2>
-                <p className="text-black racing-sans-one-regular">
+                <p className="text-gray-900 dark:text-gray-300 racing-sans-one-regular">
                   {artifact.shortDescription}
                 </p>
                 <div className="flex justify-between">
-                  <p className="text-sm text-black racing-sans-one-regular mt-1 flex items-center gap-2">
+                  <p className="text-sm text-gray-900 dark:text-gray-300 racing-sans-one-regular mt-1 flex items-center gap-2">
                     Likes : {artifact.likeCount}
                   </p>
                   <NavLink
                     to={`/allartifacts/${artifact._id}`}
-                    className="btn bg-blue-500 text-white px-3 py-1 rounded flex items-center gap-1"
+                    className="btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded flex items-center gap-1"
                   >
                     View Details <FaArrowRight />
                   </NavLink>
@@ -95,7 +97,7 @@ const Allartifact = () => {
               </div>
             ))
         ) : (
-          <p className="text-center min-h-[500px] col-span-3 text-gray-500 text-lg">
+          <p className="text-center min-h-[500px] col-span-3 text-gray-500 dark:text-gray-400 text-lg">
             No artifacts found.
           </p>
         )}

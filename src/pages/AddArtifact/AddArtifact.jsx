@@ -61,9 +61,9 @@ const AddArtifact = () => {
   };
 
   return (
-    <div className=" back p-4">
-      <div className="max-w-3xl mx-auto p-8  rounded-xl shadow ">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
+    <div className="back p-4 bg-white dark:bg-gray-900 min-h-screen mt-7">
+      <div className="max-w-3xl mx-auto p-8 rounded-xl shadow bg-gray-50 dark:bg-gray-800">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100">
           Add Artifact
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -74,7 +74,7 @@ const AddArtifact = () => {
             value={formData.artifactName}
             onChange={handleChange}
             required
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <input
@@ -84,14 +84,14 @@ const AddArtifact = () => {
             value={formData.image}
             onChange={handleChange}
             required
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <select
             name="type"
             value={formData.type}
             onChange={handleChange}
-            className="w-full border  px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           >
             <option>Tools</option>
             <option>Weapons</option>
@@ -105,7 +105,7 @@ const AddArtifact = () => {
             placeholder="Historical Context"
             value={formData.context}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <textarea
@@ -113,7 +113,7 @@ const AddArtifact = () => {
             placeholder="Short Description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <input
@@ -122,7 +122,7 @@ const AddArtifact = () => {
             placeholder="Created At (e.g., 100 BC)"
             value={formData.createdAt}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <input
@@ -131,7 +131,7 @@ const AddArtifact = () => {
             placeholder="Discovered At (e.g., 1799)"
             value={formData.discoveredAt}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <input
@@ -140,7 +140,7 @@ const AddArtifact = () => {
             placeholder="Discovered By"
             value={formData.discoveredBy}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
           <input
@@ -149,27 +149,27 @@ const AddArtifact = () => {
             placeholder="Present Location"
             value={formData.location}
             onChange={handleChange}
-            className="w-full border px-4 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
           />
 
-          <div className="grid  md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <input
               type="text"
               value={user?.displayName || ""}
               readOnly
-              className="w-full border px-4 py-2 rounded "
+              className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
             <input
               type="email"
               value={user?.email || ""}
               readOnly
-              className="w-full border px-4 py-2 rounded "
+              className="w-full border border-gray-300 dark:border-gray-600 px-4 py-2 rounded bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition"
           >
             Add Artifact
           </button>

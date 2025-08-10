@@ -11,11 +11,11 @@ const Explore_era = () => {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
         <h2
           data-aos="fade-up"
-          className="text-3xl racing-sans-one-regular text-blue-500 font-bold text-center mb-10"
+          className="text-3xl racing-sans-one-regular text-blue-500 dark:text-blue-400 font-bold text-center mb-10"
         >
           🕰️ Explore by Time Period
         </h2>
@@ -26,7 +26,7 @@ const Explore_era = () => {
               key={period.era}
               data-aos="zoom-in-up"
               data-aos-delay={index * 150}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
             >
               <div className="overflow-hidden">
                 <img
@@ -35,7 +35,7 @@ const Explore_era = () => {
                   className="h-48 w-full object-cover transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <h3 className="text-xl racing-sans-one-regular font-semibold mt-4 mb-4 text-center text-gray-800">
+              <h3 className="text-xl racing-sans-one-regular font-semibold mt-4 mb-4 text-center text-gray-800 dark:text-gray-200">
                 {period.era} Era
               </h3>
             </div>

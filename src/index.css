@@ -5,7 +5,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-
+@custom-variant dark (&:where(.dark, .dark *));
 .inter-second{
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
