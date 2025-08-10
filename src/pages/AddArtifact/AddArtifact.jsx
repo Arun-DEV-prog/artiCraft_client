@@ -62,7 +62,7 @@ const AddArtifact = () => {
 
   return (
     <div className=" back p-4">
-      <div className="max-w-3xl mx-auto p-8  bg-black rounded-xl shadow ">
+      <div className="max-w-3xl mx-auto p-8  rounded-xl shadow ">
         <h2 className="text-2xl font-semibold mb-6 text-center">
           Add Artifact
         </h2>
@@ -91,7 +91,7 @@ const AddArtifact = () => {
             name="type"
             value={formData.type}
             onChange={handleChange}
-            className="w-full border bg-black px-4 py-2 rounded"
+            className="w-full border  px-4 py-2 rounded"
           >
             <option>Tools</option>
             <option>Weapons</option>
@@ -157,13 +157,13 @@ const AddArtifact = () => {
               type="text"
               value={user?.displayName || ""}
               readOnly
-              className="w-full border px-4 py-2 rounded bg-black"
+              className="w-full border px-4 py-2 rounded "
             />
             <input
               type="email"
               value={user?.email || ""}
               readOnly
-              className="w-full border px-4 py-2 rounded bg-black"
+              className="w-full border px-4 py-2 rounded "
             />
           </div>
 

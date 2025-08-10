@@ -39,7 +39,7 @@ const slides = [
 
 export default function Hero() {
   return (
-    <div className="w-full p-5  text-white mt-5">
+    <div className="w-full p-5  text-white mt-14">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}

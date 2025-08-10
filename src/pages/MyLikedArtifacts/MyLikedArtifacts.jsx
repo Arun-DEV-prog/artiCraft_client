@@ -47,7 +47,7 @@ const MyLikedArtifacts = () => {
       {artifacts.map((artifact) => (
         <div
           key={artifact._id}
-          className="border p-4 rounded-xl shadow hover:shadow-md transition bg-[#0d0d3f]"
+          className=" p-4 rounded-xl shadow hover:shadow-md transition "
         >
           <img
             src={artifact.image}

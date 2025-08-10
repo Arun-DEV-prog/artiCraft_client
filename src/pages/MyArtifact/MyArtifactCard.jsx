@@ -19,12 +19,9 @@ const MyArtifactCard = ({ data, onDelete }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://artifact-server-rust.vercel.app/artifacts/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`https://artifact-server-rust.vercel.app/artifacts/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((resData) => {
             if (resData.deletedCount > 0) {
@@ -37,7 +34,7 @@ const MyArtifactCard = ({ data, onDelete }) => {
   };
 
   return (
-    <div className="rounded-md shadow-md bg-[#0d0d3f] dark:text-gray-800">
+    <div className="rounded-md shadow-md   dark:text-gray-800">
       <Helmet>
         <title>MyArtifact</title>
       </Helmet>

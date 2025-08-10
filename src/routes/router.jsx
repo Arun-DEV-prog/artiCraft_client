@@ -45,19 +45,11 @@ const router = createBrowserRouter([
             `https://artifact-server-rust.vercel.app/allartifacts/${params.id}`
           ),
         hydrateFallbackElement: Loading,
-        element: (
-          <PrivateRoute>
-            <Artifactdetails></Artifactdetails>
-          </PrivateRoute>
-        ),
+        element: <Artifactdetails></Artifactdetails>,
       },
       {
         path: "/addartifact",
-        element: (
-          <PrivateRoute>
-            <AddArtifact></AddArtifact>
-          </PrivateRoute>
-        ),
+        element: <AddArtifact></AddArtifact>,
       },
 
       //  my artifact
