@@ -99,11 +99,17 @@ const Navber = () => {
           ""
         ) : (
           <>
-            <NavLink className=" btn text-[16px] text-black " to="/login">
+            <NavLink
+              className=" btn text-[16px] text-black bg-blue-500 "
+              to="/login"
+            >
               <FaArrowRightFromBracket /> Sign In
             </NavLink>
 
-            <NavLink className=" btn text-[16px] text-black" to="/register">
+            <NavLink
+              className=" btn text-[16px] bg-blue-500 text-black"
+              to="/register"
+            >
               <FaArrowUpFromBracket /> Sign Up
             </NavLink>
           </>

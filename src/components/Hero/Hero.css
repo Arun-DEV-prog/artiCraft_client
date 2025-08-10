@@ -29,7 +29,8 @@ body {
   text-align: center;
   font-size: 18px;
   /* background: #444; */
-
+/*background: #833AB4;
+background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(6, 214, 204, 0.27) 87%, rgba(252, 176, 69, 1) 100%);*/
   /* Center slide text vertically */
   display: flex;
   justify-content: center;

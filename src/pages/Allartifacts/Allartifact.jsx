@@ -68,19 +68,21 @@ const Allartifact = () => {
             .map((artifact) => (
               <div
                 key={artifact._id}
-                className="border rounded shadow p-4 bg-[#0d0d3f] hover:shadow-lg transition"
+                className=" bg-[#f8f8f8] rounded shadow p-4  hover:shadow-lg transition"
               >
                 <img
                   src={artifact.image}
                   alt={artifact.artifactName}
                   className="w-full h-48 object-cover rounded"
                 />
-                <h2 className="text-xl font-bold mt-2">
+                <h2 className="text-xl racing-sans-one-regular font-bold mt-2">
                   {artifact.artifactName}
                 </h2>
-                <p className="text-white">{artifact.shortDescription}</p>
+                <p className="text-black racing-sans-one-regular">
+                  {artifact.shortDescription}
+                </p>
                 <div className="flex justify-between">
-                  <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+                  <p className="text-sm text-black racing-sans-one-regular mt-1 flex items-center gap-2">
                     Likes : {artifact.likeCount}
                   </p>
                   <NavLink

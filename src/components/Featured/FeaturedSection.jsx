@@ -28,8 +28,9 @@ const FeaturedSection = () => {
 
   return (
     <div>
-      <h1 className="text-center text-3xl mt-[50px]">Populer Artifacts</h1>
-
+      <h1 className="text-center font-playwrite   text-blue-500 italic  text-3xl mb-[40px] p-5 ">
+        Populer Artifacts
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {artifact
           .sort((a, b) => b.likeCount - a.likeCount) // Step 1: Sort by likeCount (highest first)
@@ -37,20 +38,22 @@ const FeaturedSection = () => {
           .map((artifact) => (
             <div
               key={artifact._id}
-              className="border rounded shadow p-4 bg-[#0d0d3f] hover:shadow-lg transition"
+              className=" rounded bg-[#f8f8f8] shadow-2xl p-5  hover:shadow-lg transition"
             >
               <img
                 src={artifact.image}
                 alt={artifact.artifactName}
                 className="w-full h-48 object-cover rounded"
               />
-              <h2 className="text-xl font-bold mt-2">
+              <h2 className="text-xl racing-sans-one-regular font-bold mt-2">
                 {artifact.artifactName}
               </h2>
-              <p className="text-white">{artifact.shortDescription}</p>
+              <p className="text-black racing-sans-one-regular">
+                {artifact.shortDescription}
+              </p>
               <div className=" flex justify-between">
                 <div>
-                  <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+                  <p className="text-sm text-black racing-sans-one-regular  mt-1 flex items-center gap-2">
                     <BiLike size={20} /> Likes: {artifact.likeCount}
                   </p>
                 </div>
@@ -58,7 +61,7 @@ const FeaturedSection = () => {
                 <div>
                   <Link
                     to={`/allartifacts/${artifact._id}`}
-                    className="btn bg-blue-500"
+                    className="btn bg-blue-500 text-white"
                   >
                     View Details{" "}
                     <FaArrowRight className="text-white" size={20} />
@@ -72,7 +75,7 @@ const FeaturedSection = () => {
       <div className=" text-center p-4 mt-6">
         <NavLink
           to="/allartifacts"
-          className="btn text-xl  bg-blue-600 px-5 py-1 text-black  "
+          className="btn text-xl  bg-blue-600 px-5 py-1 text-white "
         >
           See All
           <FaArrowRight className="text-white" size={20} />{" "}

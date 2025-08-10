@@ -39,14 +39,15 @@ const slides = [
 
 export default function Hero() {
   return (
-    <div className="w-full py-14  text-white">
+    <div className="w-full p-5  text-white mt-5">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl font-bold text-center mb-10"
+        className="text-3xl font-playwrite  md:text-5xl font-bold text-center text-black "
       >
-        Discover the Stories Behind the Artifacts
+        Discover <span className=" text-blue-500">the Stories Behind the </span>
+        Artifacts
       </motion.h1>
 
       {/* 🔹 Swiper Slider */}
@@ -81,15 +82,13 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-[#1b1b50] text-white rounded-xl shadow-xl overflow-hidden w-full h-full flex flex-col md:flex-row items-center justify-between p-6 gap-6"
+              className="  text-white rounded-xl shadow-xl overflow-hidden w-full h-full flex flex-col md:flex-row    p-6 gap-6"
             >
-              <div className="md:w-1/2 space-y-3 text-left">
-                <h2 className="text-2xl md:text-3xl font-bold">
+              <div className="md:w-1/2 rounded- space-y-3  h-[300px] flex  flex-col p-2  items-center justify-center  ">
+                <h2 className="text-2xl text-black md:text-3xl font-bold">
                   {slide.title}
                 </h2>
-                <p className="text-gray-300 text-sm md:text-base">
-                  {slide.desc}
-                </p>
+                <p className=" text-black text-sm md:text-base">{slide.desc}</p>
               </div>
               <div className="md:w-1/2">
                 <img
