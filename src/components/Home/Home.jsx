@@ -5,6 +5,7 @@ import FeaturedSection from "../Featured/FeaturedSection";
 import Testimonial from "../Testimonial/Testimonial";
 import Explore_era from "../Explore/Explore_era";
 import { Helmet } from "react-helmet";
+import About from "../About/About";
 
 const Home = () => {
   return (
@@ -29,7 +30,6 @@ const Home = () => {
         <div className=" w-11/12 md:h-[500px] mx-auto ">
           <Hero />
         </div>
-
         <div className=" w-11/12  md:h-[900px] mx-auto ">
           <FeaturedSection />
         </div>
@@ -38,6 +38,10 @@ const Home = () => {
         </div>
         <div>
           <Explore_era />
+        </div>
+        t
+        <div>
+          <About />
         </div>
       </div>
     </div>
